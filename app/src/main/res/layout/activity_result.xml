@@ -24,11 +24,23 @@
         android:windowSoftInputMode="adjustResize">
 
         <LinearLayout
-            android:id="@+id/container"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp16"/>
+            android:orientation="vertical">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp300" />
+
+            <LinearLayout
+                android:id="@+id/container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp16"/>
+
+        </LinearLayout>
 
     </ScrollView>
 

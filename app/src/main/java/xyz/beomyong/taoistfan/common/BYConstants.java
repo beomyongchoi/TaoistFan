@@ -131,6 +131,4 @@ public class BYConstants {
     public final static String ITEM_CONTENTS = "contents";
 
     public final static int TYPE_SECTION_HEADER = 0;
-
-    public final static int DICE = 1000;
 }

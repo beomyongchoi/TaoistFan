@@ -15,8 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import xyz.beomyong.taoistfan.common.BaseFragmentActivity;
 import xyz.beomyong.taoistfan.common.ClearEditText;
 
@@ -29,8 +27,6 @@ public class QuestionActivity extends BaseFragmentActivity {
     ClearEditText mChoicesEditText;
     Button mButtonAdd;
     LinearLayout mContainer;
-
-    ArrayList<String> mChoicesArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,18 +102,19 @@ public class QuestionActivity extends BaseFragmentActivity {
 
         count = mContainer.getChildCount();
 
-        mChoicesArrayList = new ArrayList<>();
+        String choicesArray[] =  new String[count];
         if (count > 1) {
             for (int i = 0; i < count; i++) {
                 choicesRelativeLayout = (RelativeLayout) mContainer.getChildAt(i);
                 choicesTextView = (TextView) choicesRelativeLayout.getChildAt(0);
-                mChoicesArrayList.add(choicesTextView.getText().toString());
+                choicesArray[i] = choicesTextView.getText().toString();
             }
 
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("questionTitle", mQuestionTitle);
             intent.putExtra("count", count);
-            intent.putExtra("choices", mChoicesArrayList);
+            intent.putExtra("choices", choicesArray);
             startActivity(intent);
         } else {
             Snackbar.make(view, R.string.one_more_choices, Snackbar.LENGTH_LONG)
