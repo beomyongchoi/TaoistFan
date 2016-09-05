@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,17 +49,14 @@ public class MainActivity extends BaseFragmentActivity {
         final View dialogView = inflater.inflate(R.layout.question_title_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        final ClearEditText titleEditText = (ClearEditText) dialogView.findViewById(R.id.questionTitleEditText);
+//        final ClearEditText titleEditText = (ClearEditText) dialogView.findViewById(R.id.questionTitleEditText);
+        final EditText titleEditText = (EditText) dialogView.findViewById(R.id.questionTitleEditText);
 
         dialogBuilder.setTitle(R.string.title);
         dialogBuilder.setMessage(R.string.question_title);
         dialogBuilder.setPositiveButton(R.string.done, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                mQuestionTitle = titleEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.putExtra("questionTitle", mQuestionTitle);
-                startActivity(intent);
+
             }
         });
 
@@ -72,6 +71,33 @@ public class MainActivity extends BaseFragmentActivity {
 
         alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         alertDialog.show();
+
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                mQuestionTitle = titleEditText.getText().toString();
+                if(mQuestionTitle.length() <= 20) {
+                    Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.putExtra("questionTitle", mQuestionTitle);
+                    startActivity(intent);
+                } else {
+                    Snackbar snackbar;
+                    snackbar = Snackbar.make(v, R.string.too_long_question, Snackbar.LENGTH_SHORT);
+                    View snackBarView = snackbar.getView();
+                    snackBarView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultWhite));
+                    TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+                    textView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultBlack));
+                    snackbar.show();
+
+//                    Snackbar.make(v, R.string.too_long_question, Snackbar.LENGTH_SHORT)
+//                            .setDuration(1000)
+//                            .setAction("Action", null).show();
+//                    showToast(R.string.too_long_question, 2);
+                }
+            }
+        });
 
         titleEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

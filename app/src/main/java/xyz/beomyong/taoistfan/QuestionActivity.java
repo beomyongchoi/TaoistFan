@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import xyz.beomyong.taoistfan.common.BaseFragmentActivity;
+import xyz.beomyong.taoistfan.common.ClearEditText;
 
 /**
  * Created by BeomyongChoi on 9/5/16
@@ -26,7 +26,7 @@ import xyz.beomyong.taoistfan.common.BaseFragmentActivity;
 public class QuestionActivity extends BaseFragmentActivity {
 
     String mQuestionTitle;
-    EditText mChoicesEditText;
+    ClearEditText mChoicesEditText;
     Button mButtonAdd;
     LinearLayout mContainer;
 
@@ -53,7 +53,7 @@ public class QuestionActivity extends BaseFragmentActivity {
             }
         });
 
-        mChoicesEditText = (EditText) findViewById(R.id.choicesEditText);
+        mChoicesEditText = (ClearEditText) findViewById(R.id.choicesEditText);
 
         mButtonAdd = (Button) findViewById(R.id.add);
         mContainer = (LinearLayout) findViewById(R.id.container);

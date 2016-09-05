@@ -100,4 +100,5 @@
     <string name="see_you_later">지금이 아니라도 언제든 여쭤보세요 :)</string>
     <string name="blank_edittext">아무것도 적지 않으셨네요</string>
     <string name="one_more_choices">원하는 대답을 하나 이상 적어주세요</string>
+    <string name="too_long_question">20자 이내로 작성해주세요 :)</string>
 </resources>
