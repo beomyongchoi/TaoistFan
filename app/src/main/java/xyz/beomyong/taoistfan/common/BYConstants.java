@@ -1,7 +1,7 @@
 package xyz.beomyong.taoistfan.common;
 
 /**
- * Created by BeomyongChoi on 9/5/16.
+ * Created by BeomyongChoi on 9/5/16
  */
 public class BYConstants {
     /**
@@ -131,4 +131,6 @@ public class BYConstants {
     public final static String ITEM_CONTENTS = "contents";
 
     public final static int TYPE_SECTION_HEADER = 0;
+
+    public static final int DICE = 300000;
 }

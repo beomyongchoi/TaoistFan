@@ -99,6 +99,10 @@
     <string name="done">확인</string>
     <string name="see_you_later">지금이 아니라도 언제든 여쭤보세요 :)</string>
     <string name="blank_edittext">아무것도 적지 않으셨네요</string>
-    <string name="one_more_choices">원하는 대답을 하나 이상 적어주세요</string>
+    <string name="one_more_choices">원하는 답변을 두개 이상 적어주세요 :)</string>
     <string name="too_long_question">20자 이내로 작성해주세요 :)</string>
+    <string name="empty_question">질문을 적어주세요 :)</string>
+    <string name="any_questions_ok">아무 질문이나 좋아요</string>
+    <string name="finish">점괘가 나왔습니다!</string>
+    <string name="taoist_fan_s_fan">부채도사님의 부채</string>
 </resources>

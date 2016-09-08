@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -87,8 +88,13 @@ public class QuestionActivity extends BaseFragmentActivity {
                     buttonRemove.setOnClickListener(thisListener);
                     mContainer.addView(addView);
                 } else {
-                    Snackbar.make(view, R.string.blank_edittext, Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    Snackbar snackbar;
+                    snackbar = Snackbar.make(view, R.string.blank_edittext, Snackbar.LENGTH_SHORT);
+                    View snackBarView = snackbar.getView();
+                    snackBarView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultWhite));
+                    TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+                    textView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultBlack));
+                    snackbar.setDuration(1000).show();
                 }
             }
         });
@@ -117,8 +123,13 @@ public class QuestionActivity extends BaseFragmentActivity {
             intent.putExtra("choices", choicesArray);
             startActivity(intent);
         } else {
-            Snackbar.make(view, R.string.one_more_choices, Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            Snackbar snackbar;
+            snackbar = Snackbar.make(view, R.string.one_more_choices, Snackbar.LENGTH_SHORT);
+            View snackBarView = snackbar.getView();
+            snackBarView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultWhite));
+            TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultBlack));
+            snackbar.setDuration(1000).show();
         }
     }
 }

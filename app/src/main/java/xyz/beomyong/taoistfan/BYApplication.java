@@ -5,7 +5,7 @@ import android.app.Application;
 import com.tsengvn.typekit.Typekit;
 
 /**
- * Created by BeomyongChoi on 9/5/16.
+ * Created by BeomyongChoi on 9/5/16
  */
 public class BYApplication extends Application {
     @Override

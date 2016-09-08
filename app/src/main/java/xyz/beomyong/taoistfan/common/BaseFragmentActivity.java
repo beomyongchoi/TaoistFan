@@ -16,7 +16,7 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 import xyz.beomyong.taoistfan.MainActivity;
 
 /**
- * Created by BeomyongChoi on 9/5/16.
+ * Created by BeomyongChoi on 9/5/16
  */
 public class BaseFragmentActivity extends OBFragmentActivity {
 

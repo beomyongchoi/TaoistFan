@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:textSize="@dimen/sp20"
-        android:textColor="#000" />
+        android:textColor="@color/colorContents" />
 
     <Button
         android:id="@+id/remove"

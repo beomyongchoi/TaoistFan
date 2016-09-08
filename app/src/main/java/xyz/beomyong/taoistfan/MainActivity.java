@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import xyz.beomyong.taoistfan.common.BaseFragmentActivity;
-import xyz.beomyong.taoistfan.common.ClearEditText;
 
 /**
  * Created by BeomyongChoi on 9/5/16
@@ -40,7 +39,6 @@ public class MainActivity extends BaseFragmentActivity {
 
         ImageView toolbarBackButtonImageView = (ImageView) toolbar.findViewById(R.id.toolbarBackButton);
         toolbarBackButtonImageView.setVisibility(View.INVISIBLE);
-
     }
 
     public void fabOnClick(final View view) {
@@ -62,8 +60,13 @@ public class MainActivity extends BaseFragmentActivity {
 
         dialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Snackbar.make(view, R.string.see_you_later, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar snackbar;
+                snackbar = Snackbar.make(view, R.string.see_you_later, Snackbar.LENGTH_SHORT);
+                View snackBarView = snackbar.getView();
+                snackBarView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultWhite));
+                TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorTitle));
+                snackbar.setDuration(1000).show();
             }
         });
 
@@ -77,7 +80,15 @@ public class MainActivity extends BaseFragmentActivity {
             public void onClick(View v)
             {
                 mQuestionTitle = titleEditText.getText().toString();
-                if(mQuestionTitle.length() <= 20) {
+                if (mQuestionTitle.length() == 0) {
+                    Snackbar snackbar;
+                    snackbar = Snackbar.make(v, R.string.empty_question, Snackbar.LENGTH_SHORT);
+                    View snackBarView = snackbar.getView();
+                    snackBarView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultWhite));
+                    TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+                    textView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorTitle));
+                    snackbar.setDuration(500).show();
+                } else if (mQuestionTitle.length() <= 20) {
                     Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intent.putExtra("questionTitle", mQuestionTitle);
@@ -88,13 +99,8 @@ public class MainActivity extends BaseFragmentActivity {
                     View snackBarView = snackbar.getView();
                     snackBarView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultWhite));
                     TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-                    textView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.obdefaultBlack));
-                    snackbar.show();
-
-//                    Snackbar.make(v, R.string.too_long_question, Snackbar.LENGTH_SHORT)
-//                            .setDuration(1000)
-//                            .setAction("Action", null).show();
-//                    showToast(R.string.too_long_question, 2);
+                    textView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorTitle));
+                    snackbar.setDuration(500).show();
                 }
             }
         });

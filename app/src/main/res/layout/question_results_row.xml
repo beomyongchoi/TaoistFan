@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:textSize="@dimen/sp20"
-        android:textColor="#000" />
+        android:textColor="@color/colorContents" />
 
     <TextView
         android:id="@+id/resultValueTextView"
@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/choicesTextView"
         android:layout_alignEnd="@id/choicesTextView"
-        android:textColor="#000"/>
+        android:textColor="@color/colorContents"/>
 
 </RelativeLayout>

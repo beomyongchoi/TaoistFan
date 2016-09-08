@@ -21,8 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:allowUndo="true"
-            android:hint="아무 질문이나 좋아요"/>
+            android:hint="@string/any_questions_ok"/>
 
     </android.support.design.widget.TextInputLayout>
 
